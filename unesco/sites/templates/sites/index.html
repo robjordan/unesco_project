@@ -1,0 +1,18 @@
+{% autoescape off %}
+<table>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Region</th>
+  </tr>
+  {% for site in sites %}
+  <tr>
+    <td>{{ site.id }}</td>
+    <td><a href="/sites/{{ site.pk }}/">{{ site.name }}</td>
+    <td>{{ site.category }}</td>
+    <td>{{ site.region }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endautoescape %}
