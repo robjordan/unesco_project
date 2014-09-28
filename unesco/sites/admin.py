@@ -11,9 +11,14 @@ class SiteAdmin(admin.ModelAdmin):
     list_filter = ['states']
     list_display = ['name']
     search_fields = ['name']
+    filter_vertical = ['states']
+    ordering = ['name']
+
+class StateAdmin(admin.ModelAdmin):
+    ordering = ['name']
 
 admin.site.register(Site, SiteAdmin)
-admin.site.register(State)
+admin.site.register(State, StateAdmin)
 admin.site.register(Region)
 admin.site.register(Category)
 
