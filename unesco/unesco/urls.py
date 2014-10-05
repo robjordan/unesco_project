@@ -1,12 +1,8 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, patterns, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'unesco_project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+urlpatterns = patterns('', 
+    url(r'^sites/', include('sites.urls', namespace='sites', app_name='sites')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^sites/', include('sites.urls')),
 )
