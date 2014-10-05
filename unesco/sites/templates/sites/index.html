@@ -6,7 +6,7 @@
     <th>Category</th>
     <th>Region</th>
   </tr>
-  {% for site in sites %}
+  {% for site in site_list %}
   <tr>
     <td>{{ site.id }}</td>
     <td><a href="/sites/{{ site.pk }}/">{{ site.name }}</td>

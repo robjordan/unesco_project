@@ -4,8 +4,8 @@ from sites import views
 
 urlpatterns = patterns('',
     # ex: /sites/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 
     # ex: /sites/5/
-    url(r'^(?P<site_id>\d+)/$', views.detail, name='detail'),
+    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
 )
