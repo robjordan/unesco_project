@@ -1,11 +1,17 @@
 from django.conf.urls import patterns, url
 
-from sites import views
+from . import views
 
 urlpatterns = patterns('',
     # ex: /sites/
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(
+        regex = r'^$', 
+        view = views.SiteListView.as_view(), 
+        name='list'),
 
     # ex: /sites/5/
-    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+    url(
+        regex = r'^(?P<pk>\d+)/$', 
+        view = views.SiteDetailView.as_view(), 
+        name='detail'),
 )
