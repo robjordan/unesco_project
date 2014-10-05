@@ -1,0 +1,11 @@
+{% autoescape off %}
+<title>UNESCO World Heritage Site: {{ whsite }}</title>
+<h1>{{ whsite }}</h1>
+<img src='{{ whsite.image_url }}' />
+<h2>Description</h2>
+{{ whsite.short_description }}
+<h2>Original Page</h2>
+<a href='{{ whsite.http_url }}'>link</a>
+{% endautoescape %}
+
+

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class State(models.Model):
@@ -23,7 +23,7 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name
 
-class Site(models.Model):
+class WHSite(models.Model):
 	# attributes
 	name = models.CharField(max_length=200)
 	id_number = models.PositiveSmallIntegerField("ID number", null=True, blank=False)
@@ -40,3 +40,13 @@ class Site(models.Model):
 	# methods
 	def __str__(self):
 		return self.name
+
+class Visit(models.Model):
+	# attributes
+	site = models.ForeignKey(WHSite, null=False)
+	visitor = models.ForeignKey(User, null=False)
+	date = models.DateField(null=True, blank=True)
+	comments = models.TextField(blank=True, max_length=4000, default="")
+	# methods
+	def __str__(self):
+		return str(str(self.visitor) + " visited " + str(self.site) + " on " + str(self.date))

@@ -1,12 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.views.generic import ListView, DetailView, UpdateView
-from .models import Site
+from .models import WHSite
+
 
 # Create your views here.
 class SiteListView(ListView):
-    model = Site
+    model = WHSite
 
 class SiteDetailView(DetailView):
-    model = Site
+    model = WHSite
 
 

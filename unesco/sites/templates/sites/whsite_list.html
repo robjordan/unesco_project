@@ -10,7 +10,7 @@
     <th>Category</th>
     <th>Region</th>
   </tr>
-  {% for site in site_list %}
+  {% for site in whsite_list %}
   <tr>
     <td>{{ site.id }}</td>
     <td><a href="{% url "sites:detail" site.pk %}">{{ site.name }}</td>
