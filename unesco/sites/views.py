@@ -1,5 +1,4 @@
-from django.core.urlresolvers import reverse
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView
 from .models import WHSite
 
 
