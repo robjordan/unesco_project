@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ 'localhost', ]
 
 
 # Application definition
@@ -36,9 +36,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+#    'debug_toolbar.apps.DebugToolbarConfig',
     'sites',
-    'account',
 )
+
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL=reverse_lazy("login")
+LOGIN_REDIRECT_URL=reverse_lazy("sites:list")
+LOGOUT_URL=reverse_lazy("logout")
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -48,8 +53,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "account.middleware.LocaleMiddleware",
-    "account.middleware.TimezoneMiddleware",
 )
 
 ROOT_URLCONF = 'unesco.urls'
@@ -98,6 +101,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATE_CONTEXT_PROCESSORS = [
-    "account.context_processors.account",
     "django.contrib.auth.context_processors.auth",
 ]
+
+

@@ -1,5 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 {% autoescape off %}
-<title>UNESCO World Heritage Site: {{ whsite }}</title>
+
 <h1>{{ whsite }}</h1>
 <img src='{{ whsite.image_url }}' />
 <h2>Description</h2>
@@ -8,4 +12,5 @@
 <a href='{{ whsite.http_url }}'>link</a>
 {% endautoescape %}
 
+{% endblock content %}
 
