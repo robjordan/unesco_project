@@ -12,12 +12,23 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Dealing with environment variables
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+    """Get the environment variable or return and exception."""
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=bly&vu7zd773-moat*ad#afa4_-#l&b&qjwjogjhb7l6e1i9='
+SECRET_KEY = get_env_variable("UNESCO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,9 +84,9 @@ WSGI_APPLICATION = 'unesco.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': 'dvuTcM3zvq',
+        'NAME': get_env_variable("UNESCO_DB_NAME"),
+        'USER': get_env_variable("UNESCO_DB_USER"),
+        'PASSWORD': get_env_variable("UNESCO_DB_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '',
     }
