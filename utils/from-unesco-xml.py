@@ -261,8 +261,8 @@ regions = {}
 model = []
 pk = 0
 
-# xmldata = urllib.request.urlopen('http://whc.unesco.org/en/list/xml').read()
-xmldata = open('/home/jordan/django/unesco_project/data/xml').read()
+xmldata = urllib.request.urlopen('http://whc.unesco.org/en/list/xml').read()
+# xmldata = open('/home/jordan/django/unesco_project/data/xml').read()
 doc = xmltodict.parse(xmldata)
 row = doc["query"]["row"][0]
 

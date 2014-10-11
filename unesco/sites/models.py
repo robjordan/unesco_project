@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class State(models.Model):
@@ -49,7 +49,7 @@ class WHSite(models.Model):
 class Visit(models.Model):
 	# attributes
 	site = models.ForeignKey(WHSite, null=False)
-	visitor = models.ForeignKey(User, null=False)
+	visitor = models.ForeignKey(settings.AUTH_USER_MODEL, null=False)
 	date = models.DateField(null=True, blank=True)
 	comments = models.TextField(blank=True, max_length=4000, default="")
 	# methods

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+<h1>Profile Users</h1>
+
+{% block content %}
+
+<ul>
+{% for user in profileuser_list %}
+    <li>{{ user.username }}, favourite city: {{ user.favourite_city }}, pk: {{ user.pk }}
+{% endfor %}
+</ul>
+{% endblock content %}
