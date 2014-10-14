@@ -43,6 +43,7 @@ ALLOWED_HOSTS = [ 'localhost', ]
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+#    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -50,6 +51,7 @@ INSTALLED_APPS = (
     'debug_toolbar.apps.DebugToolbarConfig',
     'sites',
     'members',
+#    'registration',
 )
 
 from django.core.urlresolvers import reverse_lazy
@@ -117,4 +119,12 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
 ]
 
+EMAIL_HOST=get_env_variable("EMAIL_HOST")
+EMAIL_PORT=get_env_variable("EMAIL_PORT")
+EMAIL_HOST_USER=get_env_variable("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD=get_env_variable("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS=get_env_variable("EMAIL_USE_TLS")
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; 
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
