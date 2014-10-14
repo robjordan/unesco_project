@@ -29,6 +29,7 @@ class Category(models.Model):
 class WHSite(models.Model):
 	# attributes
 	name = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=50, unique=True, default="")
 	id_number = models.PositiveSmallIntegerField("ID number", null=True, blank=False)
 	short_description = models.TextField(blank=True, max_length=4000, default="")
 	justification = models.TextField(blank=True, max_length=4000, default="")

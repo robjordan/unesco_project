@@ -50,12 +50,13 @@ INSTALLED_APPS = (
 #    'debug_toolbar.apps.DebugToolbarConfig',
     'sites',
     'profiles',
+    'authtools',
 )
 
 from django.core.urlresolvers import reverse_lazy
-LOGIN_URL=reverse_lazy("login")
+LOGIN_URL=reverse_lazy("profiles:login")
 LOGIN_REDIRECT_URL=reverse_lazy("profiles:home")
-LOGOUT_URL=reverse_lazy("logout")
+LOGOUT_URL=reverse_lazy("profiles:logout_then_login")
 AUTH_USER_MODEL = "profiles.ProfileUser"
 
 MIDDLEWARE_CLASSES = (

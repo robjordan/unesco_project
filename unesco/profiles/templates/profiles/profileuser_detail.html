@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1>{{ profileuser }}</h1>
-<h2>Favourite City</h2>
-{{ profileuser.favourite_city }}
+<h1>{{ profileuser.name }}</h1>
+Email: {{ profileuser.email }}
+Favourite city: {{ profileuser.profile.favourite_city }}
 
 {% endblock content %}

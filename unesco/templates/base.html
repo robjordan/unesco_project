@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}UNESCO World Heritage Sites{% endblock %}</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+        <p>Logged-in as:  {{ user.email }}, favourite city: {{ user.profile.favourite_city }} | 
+            <a href="{% url 'profiles:logout' %}">Logout</a></p>
+    {% else %}
+	<a href="{% url 'profiles:login' %}">Login</a> 
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

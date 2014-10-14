@@ -322,11 +322,12 @@ for row in doc["query"]["row"]:
     # create the model for sites
     element = {}
     fields = {}
-    element["model"] = "sites.site"
+    element["model"] = "sites.whsite"
     fields["category"] = categories[row["category"]]
     fields["id_number"] = row["id_number"]
     fields["short_description"] = row["short_description"]
     fields["name"] = row["site"]
+    fields["slug"] = str(hash(row["site"]))
     if row["justification"]:
         fields["justification"] = row["justification"]
     fields["http_url"] = row["http_url"]
