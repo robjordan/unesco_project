@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ member.user.name }}</h1>
+PK: {{ member.pk }}
+Email: {{ member.user.email }}
+Favourite city: {{ member.favourite_city }}
+
+{% endblock content %}

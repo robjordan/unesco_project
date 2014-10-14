@@ -5,10 +5,10 @@
   </head>
   <body>
     {% if user.is_authenticated %}
-        <p>Logged-in as:  {{ user.email }}, favourite city: {{ user.profile.favourite_city }} | 
-            <a href="{% url 'profiles:logout' %}">Logout</a></p>
+        <p>Logged-in as:  {{ user.username }}, favourite city: {{ user.member.favourite_city }} | 
+            <a href="{% url 'members:logout' %}">Logout</a></p>
     {% else %}
-	<a href="{% url 'profiles:login' %}">Login</a> 
+	<a href="{% url 'members:login' %}">Login</a> 
     {% endif %}
 
     {% block content %}

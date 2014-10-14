@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>List of Members</h2>
+
+<ul>
+{% for member in member_list %}
+    <li>{{ member.user.email }}, favourite city: {{ member.favourite_city }}, pk: {{ member.pk }}
+{% endfor %}
+</ul>
+{% endblock content %}
