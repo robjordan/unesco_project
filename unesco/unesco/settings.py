@@ -34,6 +34,24 @@ SECRET_KEY = get_env_variable("UNESCO_SECRET_KEY")
 DEBUG = True
 
 TEMPLATE_DEBUG = True
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/tmp/djang-debug.log',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 ALLOWED_HOSTS = [ 'localhost', ]
 
@@ -43,22 +61,23 @@ ALLOWED_HOSTS = [ 'localhost', ]
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
-#    'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar.apps.DebugToolbarConfig',
-    'sites',
+#    'debug_toolbar.apps.DebugToolbarConfig',
+    'whsites',
     'members',
 #    'registration',
 )
 
 from django.core.urlresolvers import reverse_lazy
-LOGIN_URL=reverse_lazy("login")
+LOGIN_URL=reverse_lazy("members:login")
 LOGIN_REDIRECT_URL=reverse_lazy("members:home")
-LOGOUT_URL=reverse_lazy("logout_then_login")
-# AUTH_USER_MODEL = "User"
+LOGOUT_URL=reverse_lazy("members:logout")
+AUTH_USER_MODEL = "auth.User"
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,3 +147,4 @@ EMAIL_USE_TLS=get_env_variable("EMAIL_USE_TLS")
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; 
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
+SITE_ID='1'

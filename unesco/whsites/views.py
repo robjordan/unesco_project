@@ -4,10 +4,10 @@ from .models import WHSite
 
 
 # Create your views here.
-class SiteListView(ListView):
+class WHSiteListView(ListView):
     model = WHSite
 
-class SiteDetailView(DetailView):
+class WHSiteDetailView(DetailView):
     model = WHSite
 
 

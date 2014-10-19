@@ -1,11 +1,11 @@
 from django.contrib import admin
 
 # Register your models here.
-from sites.models import WHSite
-from sites.models import State
-from sites.models import Region
-from sites.models import Category
-from sites.models import Visit
+from whsites.models import WHSite
+from whsites.models import State
+from whsites.models import Region
+from whsites.models import Category
+from whsites.models import Visit
 
 class WHSiteAdmin(admin.ModelAdmin):
     fields = ['name', 'slug', 'id_number', 'short_description', 'justification', 'http_url', 'image_url', 'inscribed_date', 'longitude', 'latitude', 'states', 'region', 'category']

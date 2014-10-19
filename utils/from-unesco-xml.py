@@ -261,8 +261,8 @@ regions = {}
 model = []
 pk = 0
 
-xmldata = urllib.request.urlopen('http://whc.unesco.org/en/list/xml').read()
-# xmldata = open('/home/jordan/django/unesco_project/data/xml').read()
+# xmldata = urllib.request.urlopen('http://whc.unesco.org/en/list/xml').read()
+xmldata = open('/home/jordan/django/unesco_project/data/xml').read()
 doc = xmltodict.parse(xmldata)
 row = doc["query"]["row"][0]
 
@@ -275,7 +275,7 @@ for i in states:
     # Create the model for states
     element = {}
     fields = {}
-    element["model"] = "sites.state"
+    element["model"] = "whsites.state"
     fields["name"] = states[i]["name"]
     fields["iso_code"] = i
     element["fields"] = fields
@@ -292,7 +292,7 @@ for row in doc["query"]["row"]:
         # create the model for categories
         element = {}
         fields = {}
-        element["model"] = "sites.category"
+        element["model"] = "whsites.category"
         fields["name"] = row["category"]
         element["fields"] = fields
         element["pk"] = pk
@@ -308,7 +308,7 @@ for row in doc["query"]["row"]:
         # create the model for regions
         element = {}
         fields = {}
-        element["model"] = "sites.region"
+        element["model"] = "whsites.region"
         fields["name"] = row["region"]
         element["fields"] = fields
         element["pk"] = pk
@@ -322,7 +322,7 @@ for row in doc["query"]["row"]:
     # create the model for sites
     element = {}
     fields = {}
-    element["model"] = "sites.whsite"
+    element["model"] = "whsites.whsite"
     fields["category"] = categories[row["category"]]
     fields["id_number"] = row["id_number"]
     fields["short_description"] = row["short_description"]

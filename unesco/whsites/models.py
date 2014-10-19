@@ -45,7 +45,7 @@ class WHSite(models.Model):
 	def __str__(self):
 		return self.name
 	class Meta:
-		verbose_name = "Site"
+		verbose_name = "UNESCO Site"
 
 class Visit(models.Model):
 	# attributes

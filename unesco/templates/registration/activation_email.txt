@@ -1,0 +1,1 @@
+To activate your account, go here: {{ site }}/members/activate/{{ activation_key }}/

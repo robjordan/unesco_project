@@ -12,12 +12,12 @@
     <th>Category</th>
     <th>Region</th>
   </tr>
-  {% for site in whsite_list %}
+  {% for whsite in whsite_list %}
   <tr>
-    <td>{{ site.id }}</td>
-    <td><a href="{% url "sites:detail" site.pk %}">{{ site.name }}</td>
-    <td>{{ site.category }}</td>
-    <td>{{ site.region }}</td>
+    <td>{{ whsite.id }}</td>
+    <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
+    <td>{{ whsite.category }}</td>
+    <td>{{ whsite.region }}</td>
   </tr>
   {% endfor %}
 </table>

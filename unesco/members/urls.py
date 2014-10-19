@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
 from . import views
 
+# These are my own URLs patterned on the standard django.contrib.auth
 urlpatterns = patterns('',
     # /members/
     url(regex=r'^$', view=views.MemberListView.as_view(), name='list'),
@@ -29,3 +30,4 @@ urlpatterns = patterns('',
     # /members/reset/done/
     url(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete', name='password_reset_complete'),
 )
+
