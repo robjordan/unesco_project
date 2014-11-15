@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     url(regex=r'^(?P<pk>\d+)/$', view=views.MemberDetailView.as_view(), name='detail'),
     # /members/home/
     url(r'^home/$', view=views.home, name='home'),
-    # /members/create/
-    url(r'^create/$', views.MemberCreateView.as_view(), name='create'),
+    # /members/create/ - disabled as it can only be piared with a user
+    # url(r'^create/$', views.MemberCreateView.as_view(), name='create'),
     # /members/login/
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     # /members/logout/

@@ -4,17 +4,28 @@ from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
-from braces.views import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
+from braces.views import LoginRequiredMixin, UserPassesTestMixin, SuperuserRequiredMixin
 from .models import Member
 
+# Only the member in question or a superuser can view member profiles
+class OwnerOrSuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self, user):
+        requestor = self.request.user.member.pk
+        owner = self.get_object().pk
+        if not (user.is_superuser or requestor == owner):
+            raise PermissionDenied
+        else:
+            return True
+
 # Create your views here.
-class MemberListView(LoginRequiredMixin, ListView):
+class MemberListView(LoginRequiredMixin, SuperuserRequiredMixin, ListView):
     model = Member
 
-class MemberDetailView(LoginRequiredMixin, DetailView):
+class MemberDetailView(LoginRequiredMixin, OwnerOrSuperuserRequiredMixin, DetailView):
     model = Member
 
-class MemberUpdateView(LoginRequiredMixin, UpdateView):
+class MemberUpdateView(LoginRequiredMixin, OwnerOrSuperuserRequiredMixin, UpdateView):
     model = Member
 
 @login_required

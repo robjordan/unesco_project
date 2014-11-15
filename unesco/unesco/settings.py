@@ -69,7 +69,7 @@ INSTALLED_APPS = (
 #    'debug_toolbar.apps.DebugToolbarConfig',
     'whsites',
     'members',
-#    'registration',
+    'registration',
 )
 
 from django.core.urlresolvers import reverse_lazy
@@ -147,4 +147,4 @@ EMAIL_USE_TLS=get_env_variable("EMAIL_USE_TLS")
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; 
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
-SITE_ID='1'
+SITE_ID='2'
