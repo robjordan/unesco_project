@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # this ensures that member profile gets registered when a user gets registered
-    url(r'members/register/$', RegistrationView.as_view(form_class = MemberRegistrationForm, template_name='members/member_form.html'), name = 'registration_register'),
+    url(r'members/register/$', RegistrationView.as_view(form_class = MemberRegistrationForm, template_name='members/member_form.html'), name = 'register'),
 
     # following are from django-registration plugin
     url(r'^members/', include('registration.backends.default.urls')),

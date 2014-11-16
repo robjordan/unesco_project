@@ -1,25 +1,30 @@
 {% extends "base.html" %}
 
-<h1>UNESCO World Heritage Sites</h1>
-
 {% block content %}
-{% autoescape off %}
+  <div class="row">
+    <div class="col-lg-12">
+      {% autoescape off %}
 
-<table>
-  <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Region</th>
-  </tr>
-  {% for whsite in whsite_list %}
-  <tr>
-    <td>{{ whsite.id }}</td>
-    <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
-    <td>{{ whsite.category }}</td>
-    <td>{{ whsite.region }}</td>
-  </tr>
-  {% endfor %}
-</table>
+      <h1>UNESCO World Heritage Sites</h1>
+
+      <table>
+	<tr>
+	  <th>#</th>
+	  <th>Name</th>
+	  <th>Category</th>
+	  <th>Region</th>
+	</tr>
+	{% for whsite in whsite_list %}
+	<tr>
+	  <td>{{ whsite.id }}</td>
+	  <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
+	  <td>{{ whsite.category }}</td>
+	  <td>{{ whsite.region }}</td>
+	</tr>
+	{% endfor %}
+      </table>
+    </div>
+  </div>
+
 {% endautoescape %}
 {% endblock content %}

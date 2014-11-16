@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <div class="row">
+    <div class="col-lg-12">
 
 {% load crispy_forms_tags %}
 <h1>Please enter registration details</h1>
@@ -9,5 +11,6 @@
 {{ form|crispy }}
 <input type="submit" value="Register">
 </form>
-
+</div>
+</div>
 {% endblock content %}

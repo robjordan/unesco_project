@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row">
+  <div class="col-lg-12">
 
-<h1>{{ member.user.username }}</h1>
-PK: {{ member.pk }}
-Email: {{ member.user.email }}
-Favourite city: {{ member.favourite_city }}
+    <h1>{{ member.user.username }}</h1>
+    PK: {{ member.pk }}
+    Email: {{ member.user.email }}
+    Favourite city: {{ member.favourite_city }}
 
+  </div>
+</div>
 {% endblock content %}
