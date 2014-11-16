@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 #    'debug_toolbar.apps.DebugToolbarConfig',
+    'crispy_forms',
     'whsites',
     'members',
     'registration',
@@ -148,3 +149,11 @@ ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window;
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
 SITE_ID='2'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)

@@ -1,17 +1,92 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- styles borrowed form the Flatly theme at http://www.bootstrapzero.com/bootstrap-template/flatly-theme -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootswatch.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/unesco.css' %}">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="../bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->    
     <title>{% block head_title %}UNESCO World Heritage Sites{% endblock %}</title>
   </head>
   <body>
-    {% if user.is_authenticated %}
-        <p>Logged-in as:  {{ user.username }}, favourite city: {{ user.member.favourite_city }} | 
-            <a href="{% url 'members:logout' %}">Logout</a></p>
-    {% else %}
-	<a href="{% url 'members:login' %}">Login</a> 
-    {% endif %}
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#">UNESCO</a>
+	</div>
 
-    {% block content %}
-    {% endblock %}
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div id="navbar" class="collapse navbar-collapse">
+	  <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sites <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+		<li><a href="{% url 'whsites:list' %}">All</a></li>
+		<li class="divider"></li>
+		<li><a href="#">By Category</a></li>
+		<li><a href="#">By Region</a></li>
+		<li><a href="#">By State</a></li>
+              </ul>
+            </li>
+	  </ul>
+
+
+
+
+          <ul class="nav navbar-nav navbar-right">
+	    {% if user.is_authenticated %}
+	    <li><a href="{% url 'members:home' %}">{{ user.username }}</a></li>
+	    <li><a href="{% url 'members:logout' %}">Logout</a></li>
+	    {% else %}
+	    <li><a href="{% url 'members:login' %}">Login</a></li> 
+	    {% endif %}
+	    
+	  </ul>
+
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+	  <div class="col-lg-8 col-md-7 col-sm-6">
+	    <!-- dummy spacer -->
+	  </div>
+	  <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="logo">
+              <a href="#"><img src="{% static 'images/unesco-passport-stamp-100.png' %}" alt="UNESCO"></a>
+            </div>
+          </div>
+	</div>
+        <div class="row">
+          <div class="col-lg-12">
+	    {% block content %}
+	    {% endblock %}
+	  </div>
+	</div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+    <script src="{% static 'js/bootswatch.js' %}"></script>  
   </body>
 </html>

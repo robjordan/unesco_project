@@ -1,12 +1,12 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
 # from django.views.generic import TemplateView, RedirectView, DeleteView
-from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from braces.views import LoginRequiredMixin, UserPassesTestMixin, SuperuserRequiredMixin
+from django.http import HttpResponseRedirect
 from .models import Member
+
 
 # Only the member in question or a superuser can view member profiles
 class OwnerOrSuperuserRequiredMixin(UserPassesTestMixin):
@@ -36,3 +36,4 @@ def home(request):
 class MemberCreateView(CreateView):
     model = Member
     success_url = reverse_lazy("members:home")
+
