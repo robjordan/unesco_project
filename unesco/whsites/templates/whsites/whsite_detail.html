@@ -7,11 +7,10 @@
       {% autoescape off %}
 
       <h1>{{ whsite }}</h1>
-      <img src='{{ whsite.image_url }}' />
+      <img class="thumbnail" src="{{ whsite.image_url }}" />
       <h2>Description</h2>
       {{ whsite.short_description }}
-      <h2>Original Page</h2>
-      <a href='{{ whsite.http_url }}'>link</a>
+      <p>Further details can be found at the UNESCO World Heritage Centre web site <a href='{{ whsite.http_url }}'>here</a>.</p>
     </div>
   </div>
 

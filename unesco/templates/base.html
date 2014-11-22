@@ -34,15 +34,28 @@
 	     <li class="active"><a href="#">Home</a></li>
              <li><a href="#about">About</a></li>
              <li><a href="#contact">Contact</a></li>
+             <li><a href="{% url 'whsites:list' %}">Sites</a></li>
+
 	     <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sites <b class="caret"></b></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Regions <b class="caret"></b></a>
                <ul class="dropdown-menu">
-		 <li><a href="{% url 'whsites:list' %}">All</a></li>
-		 <li class="divider"></li>
-		 <li><a href="#">By Category</a></li>
-		 <li><a href="#">By Region</a></li>
-		 <li><a href="#">By State</a></li>
+		 <!-- NASTY HACK - HARDCODED REGION NUMBERS -->
+		 <li><a href="{% url 'whsites:list' %}region/1">Latin America and the Caribbean</a></li>
+		 <li><a href="{% url 'whsites:list' %}region/2">Europe and North America</a></li>
+		 <li><a href="{% url 'whsites:list' %}region/3">Africa</a></li>
+		 <li><a href="{% url 'whsites:list' %}region/4">Asia and the Pacific</a></li>
+		 <li><a href="{% url 'whsites:list' %}region/5">Arab States</a></li>
                </ul>
+
+	     <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Categories <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+		 <!-- NASTY HACK - HARDCODED CATEGORY NUMBERS -->
+		 <li><a href="{% url 'whsites:list' %}category/1">Cultural</a></li>
+		 <li><a href="{% url 'whsites:list' %}category/2">Natural</a></li>
+		 <li><a href="{% url 'whsites:list' %}category/3">Mixed</a></li>
+               </ul>
+
 	     </li>
 	   </ul>
 

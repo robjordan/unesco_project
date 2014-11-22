@@ -6,23 +6,21 @@
       {% autoescape off %}
 
       <h1>UNESCO World Heritage Sites</h1>
-
-      <table>
-	<tr>
-	  <th>#</th>
-	  <th>Name</th>
-	  <th>Category</th>
-	  <th>Region</th>
-	</tr>
-	{% for whsite in whsite_list %}
-	<tr>
-	  <td>{{ whsite.id }}</td>
-	  <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
-	  <td>{{ whsite.category }}</td>
-	  <td>{{ whsite.region }}</td>
-	</tr>
-	{% endfor %}
-      </table>
+      <p>{{ criteria }}</p>
+      <div class="table-responsive">
+	<table class="table">      
+	  <tr>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	  {% for whsite in whsite_list %}
+	  <tr>
+	    <td><a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}" /></a></td>
+	    <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
+	  </tr>
+	  {% endfor %}
+	</table>
+      </div>
     </div>
   </div>
 
