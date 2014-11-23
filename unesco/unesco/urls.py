@@ -2,6 +2,7 @@ from django.conf.urls import include, patterns, url
 from django.contrib import admin
 from members.forms import MemberRegistrationForm
 from registration.backends.default.views import RegistrationView
+from django.views.generic.base import RedirectView
 
 urlpatterns = patterns('', 
     url(r'^sites/', include('whsites.urls', namespace='whsites', app_name='whsites')),
@@ -15,5 +16,7 @@ urlpatterns = patterns('',
 
     # following are from django-registration plugin
     url(r'^members/', include('registration.backends.default.urls')),
+
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico'))
 )
 
