@@ -10,12 +10,12 @@
       <div class="table-responsive">
 	<table class="table">      
 	  <tr>
-	    <th></th>
-	    <th></th>
+	    <th><div style="width: 90px" > </div></th>
+	    <th class="title"></th>
 	  </tr>
 	  {% for whsite in whsite_list %}
 	  <tr>
-	    <td><a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}" /></a></td>
+	    <td><div style="width: 90px" ><a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}" /></a></td>
 	    <td><a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</td>
 	  </tr>
 	  {% endfor %}

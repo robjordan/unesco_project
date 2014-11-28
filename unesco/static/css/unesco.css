@@ -12,4 +12,10 @@ img.thumbnail {
     width: 90px;
     margin-bottom: 0px;
 }
+td.thumbnail th.thumbnail {
+    width: 90px;
+}
+.thumbnailcolumn {
+    width: 90px;
+}
 
