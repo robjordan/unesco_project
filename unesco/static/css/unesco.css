@@ -8,10 +8,10 @@ h1 {
     color: #D8302D;
 }
 .logo{text-align:right}
-img.thumbnail {
+/* img.thumbnail {
     width: 90px;
     margin-bottom: 0px;
-}
+} */
 td.thumbnail th.thumbnail {
     width: 90px;
 }
