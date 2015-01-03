@@ -1,5 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.gis.db import models as geomodels
+from django.contrib.gis.geos import *
+from django.contrib.gis.measure import D
+from datetime import datetime
 
 # Create your models here.
 class State(models.Model):
@@ -38,10 +42,26 @@ class WHSite(models.Model):
 	inscribed_date = models.PositiveSmallIntegerField('inscribed date', null=True, blank=True)
 	latitude = models.FloatField('latitude', null=True, blank=True)
 	longitude = models.FloatField('longitude', null=True, blank=True)
+	map_point = geomodels.PointField(blank=True, null=True)
+	globe_point = geomodels.PointField(geography=True, blank=True, null=True)
 	states = models.ManyToManyField(State, null=True)
 	region = models.ForeignKey(Region, null=True)
 	category = models.ForeignKey(Category, null=True)
+	objects = geomodels.GeoManager()
 	# methods
+	def save(self):
+		if self.latitude != None:
+			lString = 'POINT({} {})'.format(self.longitude, self.latitude)
+			self.map_point = fromstr(lString)
+			self.globe_point = fromstr(lString)
+		self.last_modified = datetime.now()
+		super(WHSite, self).save()	
+
+	def nearby_sites(self,d=100000):
+		# exclude self
+		n = [s for s in WHSite.objects.filter(globe_point__distance_lt=(self.globe_point,d)) if s.pk != self.pk]
+		return n
+	
 	def __str__(self):
 		return self.name
 	class Meta:

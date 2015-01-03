@@ -8,10 +8,11 @@ h1 {
     color: #D8302D;
 }
 .logo{text-align:right}
-/* img.thumbnail {
+img.thumbnail {
     width: 90px;
-    margin-bottom: 0px;
-} */
+/*    margin-bottom: 0px; */
+}
+#thumbnailmap { height: 90px; }
 td.thumbnail th.thumbnail {
     width: 90px;
 }
@@ -19,3 +20,12 @@ td.thumbnail th.thumbnail {
     width: 90px;
 }
 
+.leaflet-container {  /* all maps */
+    width:  600px;
+    height: 400px;
+}
+
+#thumbnailmap {
+    width: 80px;
+    height: 80px;
+}

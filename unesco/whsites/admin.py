@@ -8,7 +8,7 @@ from whsites.models import Category
 from whsites.models import Visit
 
 class WHSiteAdmin(admin.ModelAdmin):
-    fields = ['name', 'slug', 'id_number', 'short_description', 'justification', 'http_url', 'image_url', 'inscribed_date', 'longitude', 'latitude', 'states', 'region', 'category']
+    fields = ['name', 'slug', 'id_number', 'short_description', 'justification', 'http_url', 'image_url', 'inscribed_date', 'longitude', 'latitude', 'map_point', 'globe_point', 'states', 'region', 'category']
     list_filter = ['states']
     list_display = ['name']
     search_fields = ['name']

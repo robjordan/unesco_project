@@ -41,7 +41,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/var/tmp/djang-debug.log',
+            'filename': '/var/tmp/django-debug.log',
         },
     },
     'loggers': {
@@ -66,8 +66,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 #    'debug_toolbar.apps.DebugToolbarConfig',
     'crispy_forms',
+    'leaflet',
     'whsites',
     'members',
     'registration',
@@ -107,12 +109,12 @@ WSGI_APPLICATION = 'unesco.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': get_env_variable("UNESCO_DB_NAME"),
         'USER': get_env_variable("UNESCO_DB_USER"),
         'PASSWORD': get_env_variable("UNESCO_DB_PASSWORD"),
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
@@ -157,3 +159,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46),
+    'DEFAULT_CENTER': (6.0, 45.0),
+    'DEFAULT_ZOOM': 1,
+    'MIN_ZOOM': 1,
+    'MAX_ZOOM': 18,
+    'RESET_VIEW': True,
+
+}
