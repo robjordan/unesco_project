@@ -62,6 +62,11 @@ class WHSite(models.Model):
 		n = [s for s in WHSite.objects.filter(globe_point__distance_lt=(self.globe_point,d)) if s.pk != self.pk]
 		return n
 	
+	def as_geojson(self):
+		coords = [self.longitude, self.latitude]
+		geojson = {"type": "Feature", "geometry": {"type": "Point", "coordinates": coords}, "properties": {"name": self.name}}
+		return geojson
+	
 	def __str__(self):
 		return self.name
 	class Meta:

@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, url
-
 from . import views
 
 urlpatterns = patterns('',
@@ -15,11 +14,17 @@ urlpatterns = patterns('',
         view = views.WHSiteDetailView.as_view(), 
         name='detail'),
 
+    # ex: /sites/NN/json
+    url(
+        regex = r'^(?P<pk>\d+)/json/$', 
+        view = views.WHSiteDetailViewJSON.as_view(), 
+        name='data'),
+
     # a slug ex: /sites/abc/
     url(
         regex = r'^(?P<slug>\w+)/$', 
         view = views.WHSiteDetailView.as_view(), 
-        name='detail'),
+        name='slugdetail'),
 
     # ex: /sites/category/cultural/, /sites/state/uk/, /sites/region/europe/
     url(

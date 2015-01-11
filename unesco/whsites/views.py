@@ -9,6 +9,7 @@ from .models import State
 from .models import Region
 from .models import Category
 # from .forms import WHSiteFilterForm
+from braces.views import JSONResponseMixin, AjaxResponseMixin
 
 # Create your views here.
 class WHSiteListView(ListView):
@@ -52,8 +53,24 @@ class WHSiteListFilteredView(ListView):
 
         return context
 
+# Original
 class WHSiteDetailView(DetailView):
     model = WHSite
+
+class WHSiteDetailViewJSON(JSONResponseMixin, AjaxResponseMixin, DetailView):
+    model = WHSite
+    json_dumps_kwargs = {"indent": 2}
+
+    def get(self, request, *args, **kwargs):
+        return self.render_json_response(self.get_object().as_geojson())
+
+class WHSiteDetailViewAJAX(JSONResponseMixin, AjaxResponseMixin, DetailView):
+    model = WHSite
+    json_dumps_kwargs = {"indent": 2}
+
+    def get_ajax(self, request, *args, **kwargs):
+        return self.render_json_object_response(self.get_object())
+
 
 
 # The following is abandoned attempt at a facet-filtered view - it depends on custom template tags... too hard right now

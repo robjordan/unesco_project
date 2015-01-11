@@ -161,8 +161,7 @@ STATICFILES_DIRS = (
 )
 
 LEAFLET_CONFIG = {
-    'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46),
-    'DEFAULT_CENTER': (6.0, 45.0),
+    'DEFAULT_CENTER': (0, 0),
     'DEFAULT_ZOOM': 1,
     'MIN_ZOOM': 1,
     'MAX_ZOOM': 18,

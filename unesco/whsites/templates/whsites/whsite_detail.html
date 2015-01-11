@@ -17,10 +17,20 @@
 	<li><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></li>
 	{% endfor %}
       </ul></p>
-      {% leaflet_map "sitelocationmap" %}
+      {% leaflet_map "sitelocationmap" callback="main_map_init" %}
     </div>
   </div>
 
+  <script type="text/javascript">
+    function main_map_init (map, options) {
+    // Use Leaflet API here
+    var dataurl = '{% url "whsites:data" whsite.pk %}';
+    // Download GeoJSON via Ajax
+    $.getJSON(dataurl, function (data) {
+        // Add GeoJSON layer
+        L.geoJson(data).addTo(map);
+    });    }
+  </script>
 {% endautoescape %}
 
 {% endblock content %}
