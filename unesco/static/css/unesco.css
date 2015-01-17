@@ -12,7 +12,6 @@ img.thumbnail {
     width: 90px;
 /*    margin-bottom: 0px; */
 }
-#thumbnailmap { height: 90px; }
 .thumbnail-column {
     width: 90px;
     position:absolute;
@@ -32,3 +31,7 @@ img.thumbnail {
     height: 80px;
 }
 
+section {
+	padding-top:60px;
+	margin-top:-60px;
+}

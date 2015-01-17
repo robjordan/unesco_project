@@ -34,9 +34,8 @@
 	 </div>
 	 <div class="navbar-collapse collapse navbar-responsive-collapse">
 	   <ul class="nav navbar-nav">
-	     <li class="active"><a href="#">Home</a></li>
+	     <li class="active"><a href="/">Home</a></li>
              <li><a href="#about">About</a></li>
-             <li><a href="#contact">Contact</a></li>
              <li><a href="{% url 'whsites:list' %}">Sites</a></li>
 
 	     <li class="dropdown">
@@ -73,8 +72,8 @@
 	     <li><a href="{% url 'members:home' %}">{{ user.username }}</a></li>
 	     <li><a href="{% url 'members:logout' %}">Logout</a></li>
 	     {% else %}
-	     <li><a href="{% url 'register' %}">Register</a></li> 
-	     <li><a href="{% url 'members:login' %}">Login</a></li> 
+	     <li><a href="{% url 'register' %}">Sign Up</a></li> 
+	     <li><a href="{% url 'members:login' %}">Sign in</a></li> 
 	     {% endif %}
 	     
 	   </ul>

@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = patterns(
     '',
+
     # ex: /sites/
     url(
         regex=r'^$',
