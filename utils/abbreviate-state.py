@@ -1,4 +1,5 @@
-import sys, json
+import sys
+import json
 
 j_in = json.load(sys.stdin)
 j_out = []
@@ -12,10 +13,4 @@ for line in j_in:
 
     j_out.append(line)
 
-print json.dumps(j_out)
-
-
-
-
-#        print "{\"pk\": " line["fields"]["pk"] ", \"model\": \"whsites.state\", \"fields\": {\"name\": " new_name "}}"
-
+print(json.dumps(j_out))

@@ -10,12 +10,11 @@ logger = logging.getLogger(__name__)
 
 # Create your models here.
 
+
 class Member(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='member', unique=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, related_name='member', unique=True)
     favourite_city = models.CharField(max_length=120, default="")
 
     def __str__(self):
         return self.user.username
-
-
-

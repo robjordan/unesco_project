@@ -1,4 +1,5 @@
-import sys, json
+import sys
+import json
 
 j_in = json.load(sys.stdin)
 j_out = []
@@ -11,7 +12,7 @@ for line in j_in:
             pk[line["fields"]["name"]] = str(line["pk"])
             xlate[line["pk"]] = int(line["pk"])
             j_out.append(line)
-        else: 
+        else:
             xlate[line["pk"]] = int(pk[line["fields"]["name"]])
 
 for line in j_in:
@@ -19,4 +20,4 @@ for line in j_in:
         line["fields"]["state"] = xlate[line["fields"]["state"]]
         j_out.append(line)
 
-print json.dumps(j_out)
+print(json.dumps(j_out))
