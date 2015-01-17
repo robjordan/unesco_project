@@ -13,15 +13,17 @@ img.thumbnail {
 /*    margin-bottom: 0px; */
 }
 #thumbnailmap { height: 90px; }
-td.thumbnail th.thumbnail {
+.thumbnail-column {
     width: 90px;
+    position:absolute;
 }
-.thumbnailcolumn {
-    width: 90px;
+.description-column{
+    padding-left:100px;
+    height: 100px;
 }
 
 .leaflet-container {  /* all maps */
-    width:  600px;
+    width:  450px;
     height: 400px;
 }
 
@@ -29,3 +31,4 @@ td.thumbnail th.thumbnail {
     width: 80px;
     height: 80px;
 }
+

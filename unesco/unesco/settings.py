@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Dealing with environment variables
 from django.core.exceptions import ImproperlyConfigured
 
+
 def get_env_variable(var_name):
     """Get the environment variable or return and exception."""
     try:
@@ -55,7 +56,6 @@ LOGGING = {
 
 ALLOWED_HOSTS = [ 'localhost', ]
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -76,9 +76,9 @@ INSTALLED_APPS = (
 )
 
 from django.core.urlresolvers import reverse_lazy
-LOGIN_URL=reverse_lazy("members:login")
-LOGIN_REDIRECT_URL=reverse_lazy("members:home")
-LOGOUT_URL=reverse_lazy("members:logout")
+LOGIN_URL = reverse_lazy("members:login")
+LOGIN_REDIRECT_URL = reverse_lazy("members:home")
+LOGOUT_URL = reverse_lazy("members:logout")
 AUTH_USER_MODEL = "auth.User"
 
 
@@ -141,20 +141,20 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
 ]
 
-EMAIL_HOST=get_env_variable("EMAIL_HOST")
-EMAIL_PORT=get_env_variable("EMAIL_PORT")
-EMAIL_HOST_USER=get_env_variable("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD=get_env_variable("EMAIL_HOST_PASSWORD")
-EMAIL_USE_TLS=get_env_variable("EMAIL_USE_TLS")
+EMAIL_HOST = get_env_variable("EMAIL_HOST")
+EMAIL_PORT = get_env_variable("EMAIL_PORT")
+EMAIL_HOST_USER = get_env_variable("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = get_env_variable("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = get_env_variable("EMAIL_USE_TLS")
 
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; 
-REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window;
+REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 
-SITE_ID='2'
+SITE_ID = '2'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-STATIC_PATH = os.path.join(BASE_DIR,'static')
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     STATIC_PATH,

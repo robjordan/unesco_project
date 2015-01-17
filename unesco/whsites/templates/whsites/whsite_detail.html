@@ -8,16 +8,21 @@
       {% autoescape off %}
 
       <h1>{{ whsite }}</h1>
-      <img class="thumbnail" src="{{ whsite.image_url }}" />
-      <h2>Description</h2>
-      {{ whsite.short_description }}
-      <p>Further details can be found at the UNESCO World Heritage Centre web site <a href='{{ whsite.http_url }}'>here</a>.</p>
-      <p>Sites within 100km of this one: <ul>
-	{% for nearby in whsite.nearby_sites %}
-	<li><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></li>
-	{% endfor %}
-      </ul></p>
-      {% leaflet_map "sitelocationmap" callback="main_map_init" %}
+      <!-- <img class="thumbnail" src="{{ whsite.image_url }}" /> -->
+      <div class="col-md-6">
+        {{ whsite.short_description }}
+        {% if whsite.nearby_sites %}
+        <p>Sites within 100km of this one: <ul>
+          {% for nearby in whsite.nearby_sites %}
+          <li><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></li>
+          {% endfor %}
+        {% endif %}
+        </ul></p>
+        <p>Further details can be found at the UNESCO World Heritage Centre web site <a href='{{ whsite.http_url }}'>here</a>.</p>
+      </div>
+      <div class="col-md-6">
+        {% leaflet_map "sitelocationmap" callback="main_map_init" %}
+      </div>
     </div>
   </div>
 
@@ -34,4 +39,3 @@
 {% endautoescape %}
 
 {% endblock content %}
-

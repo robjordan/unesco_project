@@ -83,6 +83,9 @@ class WHSite(models.Model):
             }, "properties": {"name": self.name}}
         return geojson
 
+    def states_list(self):
+        return ", ".join(map(str, self.states.all()))
+
     def __str__(self):
         return self.name
 
