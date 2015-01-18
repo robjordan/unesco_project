@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load leaflet_tags %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-12">
+      {% autoescape off %}
+
+      <h1>UNESCO World Heritage Sites</h1>
+      <div class="col-md-4">
+        <section id="about"><h2>About This Site</h2>
+          <p>The Unesco World Heritage list comprises over 1000 of the world's outstanding cultural and natural sites.</p>
+          <p>They are a magnet for travellers, many of whom have challenged themselves to 'complete' the list. We came up with the idea of this site for our own enjoyment; to capture memories of sites we have visited, to be inspired by sites we have yet to see, and to make plans for the future. Why not join us in this journey? Step lightly, take only photographs, leave only footprints.</p>
+        </section>
+      </div>
+      <div class="col-md-4">
+        <h2>Sign Up Now</h2>
+        <p>Sign up with a social network account or create a new account with your email address.</p>
+        <div class="socialbutton google">
+          <a href="{% url 'social:begin' 'google' %}">
+            <img src="{% static 'images/Google-40.png' %}" alt="Sign Up with Google">
+            Sign up with your Google account
+          </a>
+        </div>
+
+        <div class="socialbutton facebook">
+        <a href="{% url 'social:begin' 'facebook' %}">
+          <img src="{% static 'images/Facebook-40.png' %}" alt="Sign Up with Facebook">
+          Sign up with your Facebook account
+          </a>
+        </div>
+
+        <div class="socialbutton twitter">
+          <a href="{% url 'social:begin' 'twitter' %}">
+            <img src="{% static 'images/Twitter-40.png' %}" alt="Sign Up with Twitter">
+            Sign up with your Twitter account
+          </a>
+        </div>
+
+        <div class="socialbutton email">
+          <a href="{% url 'register' %}">
+            <img src="{% static 'images/Email-40.png' %}" alt="Sign Up with Email">
+            Sign up with your email account
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        Some pictures and stuff.
+      </div>
+    </div>
+  </div>
+
+{% endautoescape %}
+{% endblock content %}
