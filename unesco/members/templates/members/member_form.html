@@ -5,9 +5,8 @@
 		<div class="col-lg-12">
 
 			{% load crispy_forms_tags %}
-			<h1>Sign up with</h1>
-			<ul><li>Google</li><li>Facebook</li><li>Twitter</li></ul>
-			<h1>or enter your details here</h1>
+			<h1>Sign Up</h1>
+			<h2>Enter your details here</h2>
 			<form action="" method="post">
 				{% csrf_token %}
 				{{ form|crispy }}

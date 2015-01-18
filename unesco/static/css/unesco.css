@@ -35,3 +35,44 @@ section {
 	padding-top:60px;
 	margin-top:-60px;
 }
+
+.socialbutton {
+	height:40px;
+	color: white;
+	padding-right: 5px;
+	margin-bottom: 5px;
+}
+div.socialbutton img {
+	padding-right: 10px;
+}
+div.socialbutton a {
+	text-decoration: none;
+	color: white;
+}
+div.socialbutton a:visited {
+	text-decoration: none;
+}
+.google {
+	background-color: #bf4232;
+}
+.google:hover {
+	background-color: #dd4b39;
+}
+.email {
+	background-color: #679e42;
+}
+.email:hover {
+	background-color: #7dbf50;
+}
+.facebook {
+	background-color: #324a80;
+}
+.facebook:hover {
+	background-color: #3b5998;
+}
+.twitter {
+	background-color: #0096cc;
+}
+.twitter:hover {
+	background-color: #00aced;
+}
