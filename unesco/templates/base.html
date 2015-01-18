@@ -70,7 +70,7 @@
            <ul class="nav navbar-nav navbar-right">
 	     {% if user.is_authenticated %}
 	     <li><a href="{% url 'members:home' %}">{{ user.username }}</a></li>
-	     <li><a href="{% url 'members:logout' %}">Logout</a></li>
+	     <li><a href="{% url 'members:logout' %}">Sign Out</a></li>
 	     {% else %}
 	     <li><a href="{% url 'register' %}">Sign Up</a></li> 
 	     <li><a href="{% url 'members:login' %}">Sign in</a></li> 

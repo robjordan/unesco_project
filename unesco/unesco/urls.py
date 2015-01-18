@@ -20,6 +20,8 @@ urlpatterns = patterns(
         include('members.urls', namespace='members', app_name='members')),
     url(r'^admin/', include(admin.site.urls)),
 
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
     # this ensures that member profile gets registered when a user gets
     # registered
     url(r'members/register/$',

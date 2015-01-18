@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
 #    'debug_toolbar.apps.DebugToolbarConfig',
+    'social.apps.django_app.default',
     'crispy_forms',
     'leaflet',
     'whsites',
@@ -139,7 +140,16 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 EMAIL_HOST = get_env_variable("EMAIL_HOST")
 EMAIL_PORT = get_env_variable("EMAIL_PORT")
@@ -168,3 +178,23 @@ LEAFLET_CONFIG = {
     'RESET_VIEW': True,
 
 }
+
+# Social Auth configuration
+SOCIAL_AUTH_TWITTER_KEY = get_env_variable("UNESCO_SOCIAL_AUTH_TWITTER_KEY")
+SOCIAL_AUTH_TWITTER_SECRET = get_env_variable("UNESCO_SOCIAL_AUTH_TWITTER_SECRET")
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = reverse_lazy("members:home")
+SOCIAL_AUTH_LOGIN_URL = reverse_lazy("members:login")
+# SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'members.models.create_member_from_social_profile',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
