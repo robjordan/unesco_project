@@ -182,6 +182,13 @@ LEAFLET_CONFIG = {
 # Social Auth configuration
 SOCIAL_AUTH_TWITTER_KEY = get_env_variable("UNESCO_SOCIAL_AUTH_TWITTER_KEY")
 SOCIAL_AUTH_TWITTER_SECRET = get_env_variable("UNESCO_SOCIAL_AUTH_TWITTER_SECRET")
+SOCIAL_AUTH_FACEBOOK_KEY = get_env_variable("UNESCO_SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = get_env_variable("UNESCO_SOCIAL_AUTH_FACEBOOK_SECRET")
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['publish_actions', 'email']
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [('username', 'username'), ('name', 'name')]
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = get_env_variable("UNESCO_SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_env_variable("UNESCO_SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [('username', 'username'), ('name', 'name'),('gender','gender'),('emails','emails')]
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = reverse_lazy("members:home")
 SOCIAL_AUTH_LOGIN_URL = reverse_lazy("members:login")
 # SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 
@@ -193,8 +200,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'social.pipeline.user.create_user',
-    'members.models.create_member_from_social_profile',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details'
+    'social.pipeline.user.user_details',
+    'members.models.create_member_from_social_profile',
 )

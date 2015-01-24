@@ -18,7 +18,7 @@
           {% endfor %}
         {% endif %}
         </ul></p>
-        <p>Further details can be found at the UNESCO World Heritage Centre web site <a href='{{ whsite.http_url }}'>here</a>.</p>
+        <p>Further details can be found at the <a href='{{ whsite.http_url }}'>UNESCO World Heritage Centre web site</a>.</p>
       </div>
       <div class="col-md-6">
         {% leaflet_map "sitelocationmap" callback="main_map_init" %}

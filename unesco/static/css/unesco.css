@@ -41,6 +41,7 @@ section {
 	color: white;
 	padding-right: 5px;
 	margin-bottom: 5px;
+	overflow: hidden;
 }
 div.socialbutton img {
 	padding-right: 10px;

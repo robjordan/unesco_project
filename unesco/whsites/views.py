@@ -10,7 +10,7 @@ from .models import State
 from .models import Region
 from .models import Category
 # from .forms import WHSiteFilterForm
-from braces.views import JSONResponseMixin, AjaxResponseMixin
+from braces.views import JSONResponseMixin, AjaxResponseMixin, PrefetchRelatedMixin
 
 
 # Create your views here.
@@ -23,14 +23,14 @@ class HomePageView(TemplateView):
         return context
 
 
-class WHSiteListView(ListView):
+class WHSiteListView(PrefetchRelatedMixin, ListView):
     model = WHSite
+    prefetch_related = ["states"]
 
 
 class WHSiteListFilteredView(ListView):
 
     def get_queryset(self):
-
         path = self.request.path.split("/")
         self.category = []
         self.region = []
@@ -38,10 +38,12 @@ class WHSiteListFilteredView(ListView):
 
         if path[2] == 'category':
             self.category = get_object_or_404(Category, pk=path[3])
-            return WHSite.objects.filter(category=self.category)
+            return WHSite.objects.filter(
+                category=self.category).prefetch_related("states")
         elif path[2] == 'region':
             self.region = get_object_or_404(Region, pk=path[3])
-            return WHSite.objects.filter(region=path[3])
+            return WHSite.objects.filter(
+                region=path[3]).prefetch_related("states")
         elif path[2] == 'state':
             self.states = State.objects.filter(iso_code=path[3])
             if not self.states:
@@ -86,7 +88,6 @@ class WHSiteDetailViewAJAX(JSONResponseMixin, AjaxResponseMixin, DetailView):
 
     def get_ajax(self, request, *args, **kwargs):
         return self.render_json_object_response(self.get_object())
-
 
 
 # The following is abandoned attempt at a facet-filtered view:

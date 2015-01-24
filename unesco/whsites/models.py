@@ -80,7 +80,7 @@ class WHSite(models.Model):
         coords = [self.longitude, self.latitude]
         geojson = {"type": "Feature", "geometry": {
             "type": "Point", "coordinates": coords
-            }, "properties": {"name": self.name}}
+        }, "properties": {"name": self.name}}
         return geojson
 
     def states_list(self):
@@ -103,8 +103,5 @@ class Visit(models.Model):
 
     def __str__(self):
         return str(
-            str(self.visitor) +
-            " visited " +
-            str(self.site) +
-            " on " +
-            str(self.date))
+            self.visitor
+            )+" visited "+str(self.site)+" on "+str(self.date)
