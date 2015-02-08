@@ -14,6 +14,11 @@ urlpatterns = patterns(
         view=views.MemberDetailView.as_view(),
         name='detail'),
 
+    # /members/<numeric>/update/
+    url(regex=r'^(?P<pk>\d+)/update/$',
+        view=views.MemberUpdateView.as_view(),
+        name='update'),
+
     # /members/home/
     url(r'^home/$', view=views.home, name='home'),
 

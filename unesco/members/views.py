@@ -40,6 +40,7 @@ class MemberUpdateView(
     UpdateView
 ):
     model = Member
+    fields = ('favourite_city',)
 
 
 @login_required
