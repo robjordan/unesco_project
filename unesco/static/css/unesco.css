@@ -10,7 +10,7 @@ h1 {
 .logo{text-align:right}
 img.thumbnail {
     width: 90px;
-/*    margin-bottom: 0px; */
+    margin-bottom: 0px;
 }
 .thumbnail-column {
     width: 90px;
@@ -22,7 +22,7 @@ img.thumbnail {
 }
 
 .leaflet-container {  /* all maps */
-    width:  450px;
+    width:  310px;
     height: 400px;
 }
 
@@ -51,6 +51,24 @@ div.socialbutton a {
 	color: white;
 }
 div.socialbutton a:visited {
+	text-decoration: none;
+}
+.columnbutton {
+	height:40px;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	line-height: 40px;
+	padding-right: 5px;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+.recordvisit {
+	background-color: #d8302d;
+}
+.recordvisit:hover {
+	background-color: #eb3431;
 	text-decoration: none;
 }
 .google {

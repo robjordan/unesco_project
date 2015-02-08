@@ -5,7 +5,6 @@ from whsites.models import WHSite
 from whsites.models import State
 from whsites.models import Region
 from whsites.models import Category
-from whsites.models import Visit
 
 
 class WHSiteAdmin(admin.ModelAdmin):
@@ -24,11 +23,7 @@ class StateAdmin(admin.ModelAdmin):
     ordering = ['name']
 
 
-class VisitAdmin(admin.ModelAdmin):
-    ordering = ['date']
-
 admin.site.register(WHSite, WHSiteAdmin)
 admin.site.register(State, StateAdmin)
-admin.site.register(Visit, VisitAdmin)
 admin.site.register(Region)
 admin.site.register(Category)

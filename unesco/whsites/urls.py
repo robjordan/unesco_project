@@ -7,7 +7,9 @@ urlpatterns = patterns(
     # ex: /sites/
     url(
         regex=r'^$',
-        view=views.WHSiteListView.as_view(),
+        view=views.WHSiteListView.as_view(
+            # paginate_by = '5' (https://djangosnippets.org/snippets/3023/)
+            ),
         name='list'),
 
     # ex: /sites/NN/

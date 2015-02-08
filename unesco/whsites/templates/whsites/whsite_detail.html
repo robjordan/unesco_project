@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load leaflet_tags %}
-
+{% block head_title %}UNESCO World Heritage Sites: {{ whsite }}{% endblock %}
 {% block content %}
   <div class="row">
     <div class="col-lg-12">
@@ -9,18 +9,34 @@
 
       <h1>{{ whsite }}</h1>
       <!-- <img class="thumbnail" src="{{ whsite.image_url }}" /> -->
-      <div class="col-md-6">
+      <div class="col-md-4">
         {{ whsite.short_description }}
+        </ul></p>
+        <p>Further details can be found at the <a href='{{ whsite.http_url }}'>UNESCO World Heritage Centre web site</a>.</p>
+      </div>
+      <div class="col-md-4">
+        
+        {% if user.is_authenticated %}
+        <a href="{% url "visits:create" %}?site={{ whsite.pk }}&success_url={% url "whsites:detail" whsite.pk %}" class="btn btn-default btn-block">Record a visit to this site</a>
+        <p> </p>
+        {% endif %}    
+        
+        {% if whsite.visits %}
+        <ul>
+        {% for visit in whsite.visits %}
+        <li>{{ visit }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+
         {% if whsite.nearby_sites %}
-        <p>Sites within 100km of this one: <ul>
+        <p>Why not visit nearby sites while you are there: <ul>
           {% for nearby in whsite.nearby_sites %}
           <li><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></li>
           {% endfor %}
         {% endif %}
-        </ul></p>
-        <p>Further details can be found at the <a href='{{ whsite.http_url }}'>UNESCO World Heritage Centre web site</a>.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         {% leaflet_map "sitelocationmap" callback="main_map_init" %}
       </div>
     </div>

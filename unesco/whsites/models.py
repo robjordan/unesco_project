@@ -1,9 +1,7 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.gis.db import models as geomodels
 from django.contrib.gis.geos import *
 from django.contrib.gis.measure import D
-from datetime import datetime
 
 
 # Create your models here.
@@ -86,6 +84,10 @@ class WHSite(models.Model):
     def states_list(self):
         return ", ".join(map(str, self.states.all()))
 
+    def visits(self):
+        from visits.models import Visit
+        return Visit.objects.filter(site=self)
+
     def __str__(self):
         return self.name
 
@@ -93,15 +95,3 @@ class WHSite(models.Model):
         verbose_name = "UNESCO Site"
 
 
-class Visit(models.Model):
-    # attributes
-    site = models.ForeignKey(WHSite, null=False)
-    visitor = models.ForeignKey(settings.AUTH_USER_MODEL, null=False)
-    date = models.DateField(null=True, blank=True)
-    comments = models.TextField(blank=True, max_length=4000, default="")
-    # methods
-
-    def __str__(self):
-        return str(
-            self.visitor
-            )+" visited "+str(self.site)+" on "+str(self.date)

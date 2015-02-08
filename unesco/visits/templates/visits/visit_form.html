@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head_title %}UNESCO World Heritage Sites: Record a Visit{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-lg-12">
+
+			{% load crispy_forms_tags %}
+			<h1>Record a visit by {{ user.username }}</h1>
+			<h2>Enter details here</h2>
+			<form action="" method="post" visitor="{{ user.username }}">
+				{% csrf_token %}
+				{{ form|crispy }}
+				<input type="submit" value="Save">
+			</form>
+		</div>
+	</div>
+{% endblock content %}

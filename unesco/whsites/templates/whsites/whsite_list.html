@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load leaflet_tags %}
-
+{% block head_title %}UNESCO World Heritage Sites: Site List{% endblock %}
 {% block content %}
   <div class="row">
     <div class="col-lg-12">
@@ -11,7 +11,7 @@
       {% for whsite in whsite_list %}
       <div class="row">
       <div class="thumbnail-column">
-          <a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}" /></a>
+          <a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}"/></a>
         </div>
         <div class="col-md-12 description-column">
           <a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</a>

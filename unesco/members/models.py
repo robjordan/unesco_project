@@ -5,7 +5,7 @@ from registration.models import RegistrationManager
 # import the logging library
 import logging
 from django.core.exceptions import ObjectDoesNotExist
-from whsites.models import Visit
+from visits.models import Visit
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)

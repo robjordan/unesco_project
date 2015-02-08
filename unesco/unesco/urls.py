@@ -15,6 +15,9 @@ urlpatterns = patterns(
     url(r'^sites/',
         include('whsites.urls', namespace='whsites', app_name='whsites')),
 
+    url(r'^visits/',
+        include('visits.urls', namespace='visits', app_name='visits')),
+
     # the following are locally-defined based on django.contrib.auth
     url(r'^members/',
         include('members.urls', namespace='members', app_name='members')),

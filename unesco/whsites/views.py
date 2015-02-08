@@ -9,6 +9,7 @@ from .models import WHSite
 from .models import State
 from .models import Region
 from .models import Category
+from visits.models import Visit
 # from .forms import WHSiteFilterForm
 from braces.views import JSONResponseMixin, AjaxResponseMixin, PrefetchRelatedMixin
 
@@ -73,6 +74,13 @@ class WHSiteListFilteredView(ListView):
 class WHSiteDetailView(DetailView):
     model = WHSite
 
+#    def get_context_data(self, **kwargs):
+#        # Call the base implementation first to get a context
+#        context = super(DetailView, self).get_context_data(**kwargs)
+#        # Add Visits to this WHSite
+#        context['visits'] = Visit.objects.()
+#        return context
+
 
 class WHSiteDetailViewJSON(JSONResponseMixin, AjaxResponseMixin, DetailView):
     model = WHSite
@@ -88,44 +96,3 @@ class WHSiteDetailViewAJAX(JSONResponseMixin, AjaxResponseMixin, DetailView):
 
     def get_ajax(self, request, *args, **kwargs):
         return self.render_json_object_response(self.get_object())
-
-
-# The following is abandoned attempt at a facet-filtered view:
-# it depends on custom template tags... too hard right now
-#
-# def whsite_list(request):
-#     qs = WHSite.objects.order_by('name')
-#
-#     form = WHSiteFilterForm(data=request.REQUEST)
-#
-#     facets = {
-#         'selected': {},
-#         'categories': {
-#             'states': State.objects.all(),
-#             'regions': Region.objects.all(),
-#             'categories': Category.objects.all(),
-#         },
-#     }
-#
-#     if form.is_valid():
-#         state = form.cleaned_data['state']
-#         if state:
-#             facets['selected']['state'] = state
-#             qs = qs.filter(state=state).distinct()
-#
-#         region = form.cleaned_data['region']
-#         if region:
-#             facets['selected']['region'] = region
-#             qs = qs.filter(region=region).distinct()
-#
-#         state = form.cleaned_data['state']
-#         if state:
-#             facets['selected']['state'] = state
-#             qs = qs.filter(state=state).distinct()
-#
-#         context = {
-#             'form': form,
-#             'facets': facets,
-#             'object_list': qs,
-#             }
-#         return render(request, "whsites/whsite_filtered_list.html", context)

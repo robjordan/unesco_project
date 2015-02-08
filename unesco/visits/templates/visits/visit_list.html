@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block head_title %}UNESCO World Heritage Sites: Visit List{% endblock %}
+{% block content %}
+<h1>Visit List</h1>
+	<ul>
+		{% for visit in visit_list %}
+		<li>{{ visit }}</li>
+		{% endfor %}
+	</ul>
+{% endblock content %}

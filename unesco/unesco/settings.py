@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'leaflet',
     'whsites',
+    'visits',
     'members',
     'registration',
 )

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block head_title %}UNESCO World Heritage Sites: {{ member.user.username }}{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -9,8 +10,6 @@
     	<li>PK: {{ member.pk }}</li>
     	<li>Email: {{ member.user.email }}</li>
     	<li>Favourite city: {{ member.favourite_city }}</li>
-    	<li>Extra data: {{member.extra_data}}</li>
-    	<li>Social: {{member.social_response}}</li>
     	{% if member.visits %}
     	<li>Visits</li>
     	<ul>
