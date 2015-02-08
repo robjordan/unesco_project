@@ -3,8 +3,8 @@ unesco_project
 
 UNESCO World Heritage Site Tracker
 
-Site Description
-================
+Application description
+=======================
 
 The Unesco World Heritage list comprises over 1000 of the world's outstanding cultural and natural sites.
 
