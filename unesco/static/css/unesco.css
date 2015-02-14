@@ -15,13 +15,15 @@ img.thumbnail {
 .thumbnail-column {
     width: 90px;
     position:absolute;
+    z-index: 999;
 }
+
 .description-column{
     padding-left:100px;
     height: 100px;
 }
 
-.leaflet-container {  /* all maps */
+.leaflet-container {
     width:  310px;
     height: 400px;
 }
