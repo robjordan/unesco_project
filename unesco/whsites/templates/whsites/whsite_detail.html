@@ -25,32 +25,48 @@
       <h1>{{ whsite }}</h1>
       <!-- <img class="thumbnail" src="{{ whsite.image_url }}" /> -->
       <div class="col-md-4">
-        {{ whsite.short_description }}
-        </ul></p>
-        <p>Further details can be found at the <a href='{{ whsite.http_url }}'>UNESCO World Heritage Centre web site</a>.</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{ whsite.short_description }}
+            <p>Further details can be found at the <a href='{{ whsite.http_url }}'>UNESCO World Heritage Centre web site</a>.</p>
+          </div>
+        </div>
       </div>
+      
       <div class="col-md-4">
-        
         {% if user.is_authenticated %}
-        <a href="{% url "visits:create" %}?site={{ whsite.pk }}&success_url={% url "whsites:detail" whsite.pk %}" class="btn btn-default btn-block">Record a visit to this site</a>
-        <p> </p>
+          {% if whsite in user.member.sites %}
+          <div class="well">
+            You have recorded a visit to this site
+          </div>
+          {% else %}
+            <a href="{% url "visits:create" %}?site={{ whsite.pk }}&success_url={% url "whsites:detail" whsite.pk %}" class="btn btn-default btn-block">Record a visit to this site</a>
+          {% endif %}
         {% endif %}    
         
         {% if whsite.visits %}
-        <ul>
-        {% for visit in whsite.visits %}
-        <li>{{ visit }}</li>
-        {% endfor %}
-        </ul>
+          <ul class="list-group">
+            {% for visit in whsite.visits %}
+              <li class="list-group-item">
+                {{ visit }}
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
 
         {% if whsite.nearby_sites %}
-        <p>Why not visit nearby sites while you are there: <ul>
-          {% for nearby in whsite.nearby_sites %}
-          <li><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></li>
-          {% endfor %}
+          <div class="panel panel-default">
+            <div class="panel-heading">Why not visit nearby sites?</div>
+              <div class="panel-body">
+                {% for nearby in whsite.nearby_sites %}
+                  <p><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         {% endif %}
       </div>
+      
       <div class="col-md-4">
         {% leaflet_map "sitelocationmap" callback="main_map_init" %}
       </div>

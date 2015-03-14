@@ -70,6 +70,7 @@ INSTALLED_APPS = (
 #    'debug_toolbar.apps.DebugToolbarConfig',
     'social.apps.django_app.default',
     'crispy_forms',
+    'django_date_extensions',
     'leaflet',
     'whsites',
     'visits',

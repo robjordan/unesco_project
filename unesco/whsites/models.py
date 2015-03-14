@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.gis.db import models as geomodels
 from django.contrib.gis.geos import *
 from django.contrib.gis.measure import D
+from django.utils import timezone
+from datetime import datetime
 
 
 # Create your models here.

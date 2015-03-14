@@ -22,6 +22,14 @@ class Member(models.Model):
     def visits(self):
         return Visit.objects.filter(visitor=self.user)
 
+    @property
+    def sites(self):
+        s = [v.site for v in self.visits()]
+        return s
+
+    def visited_site(self, site):
+        return site in self.visits()
+
     def __str__(self):
         return self.user.username
 

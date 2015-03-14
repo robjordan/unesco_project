@@ -10,14 +10,22 @@
     	<li>PK: {{ member.pk }}</li>
     	<li>Email: {{ member.user.email }}</li>
     	<li>Favourite city: {{ member.favourite_city }}</li>
-    	{% if member.visits %}
-    	<li>Visits</li>
-    	<ul>
-    		{% for visit in member.visits %}
-    		<li>{{ visit }}</li>
-    		{% endfor %}
-    	</ul>
-    	{% endif %}
+        {% if member.visits %}
+        <li>Visits</li>
+        <ul>
+            {% for visit in member.visits %}
+            <li>{{ visit }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if member.sites %}
+        <li>Sites</li>
+        <ul>
+            {% for site in member.sites %}
+            <li>{{ site }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </ul>
   </div>
 </div>
