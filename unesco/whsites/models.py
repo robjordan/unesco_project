@@ -83,8 +83,11 @@ class WHSite(models.Model):
         }, "properties": {"name": self.name}}
         return geojson
 
-    def states_list(self):
+    def states_list_csv(self):
         return ", ".join(map(str, self.states.all()))
+
+    def states_list(self):
+        return self.states.all()
 
     def visits(self):
         from visits.models import Visit

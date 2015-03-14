@@ -14,8 +14,11 @@
           <a href="{% url "whsites:detail" whsite.pk %}"><img class="thumbnail" src="{{ whsite.image_url }}"/></a>
         </div>
         <div class="col-md-12 description-column">
-          <a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</a>
-          <br/>{{ whsite.states_list }}
+          <a href="{% url "whsites:detail" whsite.pk %}">{{ whsite.name }}</a><br/>
+          {% for state in whsite.states_list %}
+          <a href="{% url "whsites:bystate" state.iso_code %}">
+          {{ state }}</a>{% if not forloop.last %}, {% endif %}   
+          {% endfor %}
         </div>
       </div>
       {% endfor %}

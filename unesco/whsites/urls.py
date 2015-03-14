@@ -32,8 +32,20 @@ urlpatterns = patterns(
 
     # ex: /sites/category/cultural/, /sites/state/uk/, /sites/region/europe/
     url(
-        regex=r'^(?P<filter_kw>\w+)/(?P<filter_value>\w+)/$',
+        regex=r'^category/(?P<filter_value>\w+)/$',
         view=views.WHSiteListFilteredView.as_view(),
-        name='list'),
+        name='bycategory'),
+
+    # ex: /sites/category/cultural/, /sites/state/uk/, /sites/region/europe/
+    url(
+        regex=r'^state/(?P<filter_value>\w+)/$',
+        view=views.WHSiteListFilteredView.as_view(),
+        name='bystate'),
+
+    # ex: /sites/category/cultural/, /sites/state/uk/, /sites/region/europe/
+    url(
+        regex=r'^region/(?P<filter_value>\w+)/$',
+        view=views.WHSiteListFilteredView.as_view(),
+        name='byregion'),
 
 )
