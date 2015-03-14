@@ -42,6 +42,8 @@
           {% else %}
             <a href="{% url "visits:create" %}?site={{ whsite.pk }}&success_url={% url "whsites:detail" whsite.pk %}" class="btn btn-default btn-block">Record a visit to this site</a>
           {% endif %}
+        {% else %} {# not authenticated #}
+          <a href="{% url 'register' %}?site={{ whsite.pk }}&success_url={% url "whsites:detail" whsite.pk %}" class="btn btn-default btn-block">Signup to record a visit to this site</a>
         {% endif %}    
         
         {% if whsite.visits %}
@@ -57,16 +59,15 @@
         {% if whsite.nearby_sites %}
           <div class="panel panel-default">
             <div class="panel-heading">Why not visit nearby sites?</div>
-              <div class="panel-body">
-                {% for nearby in whsite.nearby_sites %}
-                  <p><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></p>
+            <div class="panel-body">
+              {% for nearby in whsite.nearby_sites %}
+                <p><a href="{% url "whsites:detail" nearby.pk %}">{{ nearby.name }}</a></p>
                 {% endfor %}
-              </div>
             </div>
           </div>
         {% endif %}
       </div>
-      
+
       <div class="col-md-4">
         {% leaflet_map "sitelocationmap" callback="main_map_init" %}
       </div>
