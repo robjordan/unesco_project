@@ -98,5 +98,3 @@ class WHSite(models.Model):
 
     class Meta:
         verbose_name = "UNESCO Site"
-
-
